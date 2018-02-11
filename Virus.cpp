@@ -1,8 +1,11 @@
 #include <cstdlib>
 #include <iostream>
 #include <dirent.h>
+#include <windows.h>
 
 using namespace std;
+
+#define GetCurrentDir _getcwd
 
 int main()
 {
@@ -10,8 +13,12 @@ int main()
 	struct dirent *ent;
 	char simpan[260][260];
 	int i=0;
+	char buff[FILENAME_MAX];
+  	GetCurrentDir( buff, FILENAME_MAX );
+  	printf("Current working dir: %s\n", buff);
 	
-	if ((dir = opendir ("D:\\Masa Masa Kuliah\\Semester 6\\KIJ\\test")) != NULL) {
+	
+	if ((dir = opendir (buff)) != NULL) {
   		/* print all the files and directories within directory */
   		while ((ent = readdir (dir)) != NULL) {
     		printf ("%s\n", ent->d_name);
