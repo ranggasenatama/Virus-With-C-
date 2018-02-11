@@ -16,6 +16,15 @@ int main()
   		while ((ent = readdir (dir)) != NULL) {
     		printf ("%s\n", ent->d_name);
     		strcpy(simpan[i],ent->d_name);
+    		for(int k=0;k<strlen(simpan[i]);k++){
+    			if(simpan[i][k]==' '){
+    				simpan[i][k]='*';
+				}
+				if(simpan[i][k+1] == ' ' && simpan[i][k+1] == '-' && simpan[i][k+1] == 'q')
+				{
+					break;
+				}
+			}
     		i++;
   		}
   	closedir (dir);
